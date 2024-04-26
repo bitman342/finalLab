@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: bitman342/FinalProject
+  IMAGE_NAME: bitman342/final-project
   VERSION: 1.0.0
 
 
