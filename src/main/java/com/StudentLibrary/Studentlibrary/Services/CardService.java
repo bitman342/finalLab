@@ -20,7 +20,7 @@ public class CardService {
     public Card createCard(Student student){
         Card card =new Card();
         student.setCard(card);
-        card.setStudent(student);
+       // card.setStudent(student);
         cardRepository.save(card);
         return card;
     }

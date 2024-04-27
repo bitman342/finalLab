@@ -59,9 +59,7 @@ public class StudentService {
         students.setPassword(passwordEncoder.encode(student.getPassword()));
         students.setCreatedOn(students.getCreatedOn());
         students.setUpdatedOn(students.getUpdatedOn());
-        students.setRole(student.getRole())
-
-        ;
+        students.setRole(student.getRole());
          studentRepository.save(students);
 
 

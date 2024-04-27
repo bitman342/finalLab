@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Book extends User{
+public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
@@ -46,10 +46,6 @@ public class Book extends User{
         this.genre = genre;
         this.author=author;
         this.available =true;
-    }
-    @Override
-    public Long getId() {
-        return super.getId();  // Assuming the ID is stored and managed in the User class
     }
 
 

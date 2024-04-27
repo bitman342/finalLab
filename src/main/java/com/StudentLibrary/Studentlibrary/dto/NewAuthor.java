@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 public class NewAuthor {
 
-    private int id;
 
     private String name;
 
@@ -21,7 +20,6 @@ public class NewAuthor {
 
     public Author toAuthor(){
         Author author=new Author();
-        author.setId(this.id);
         author.setName(this.name);
         author.setEmail(this.email);
         author.setAge(this.age);

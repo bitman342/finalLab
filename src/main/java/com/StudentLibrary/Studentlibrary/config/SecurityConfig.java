@@ -37,14 +37,20 @@ public class SecurityConfig {
                             "/createBook",
                             "/PostMapping",
                             "/createStudent",
-                            "issueBook",
+                            "/issueBook",
                             "/updateAuthor"
+                    ).permitAll();
+
+                    auth.requestMatchers(
+                            HttpMethod.GET,
+                            "/getBooks"
+
                     ).permitAll();
 
 
                     auth.requestMatchers(
                             HttpMethod.POST,
-                            "/createStudent",
+                            "/createCard",
                             "/createBook",
                             "/PostMapping",
                             "issueBook",

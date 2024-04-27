@@ -9,7 +9,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Date;
 
 @Entity
-
 @Data
 public class Student extends User {
     @Id

@@ -2,6 +2,8 @@ package com.StudentLibrary.Studentlibrary.Controllers;
 
 import com.StudentLibrary.Studentlibrary.Model.Book;
 import com.StudentLibrary.Studentlibrary.Services.BookService;
+import com.StudentLibrary.Studentlibrary.dto.BookResponse;
+import com.StudentLibrary.Studentlibrary.dto.NewBookRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,18 +18,18 @@ public class BookController {
     BookService bookService;
 
     @PostMapping("/createBook")
-    public ResponseEntity createBook(@RequestBody Book book){
+    public ResponseEntity<BookResponse> createBook(@RequestBody NewBookRequest book){
 
-        bookService.createBook(book);
-        return new ResponseEntity("Book added to the library system", HttpStatus.ACCEPTED);
+        BookResponse bookResponse = bookService.createBook(book);
+        return new ResponseEntity(bookResponse, HttpStatus.ACCEPTED);
 
     }
     @GetMapping("/getBooks")
-    public ResponseEntity getBooks(@RequestParam(value = "genre",required = false) String genre,
+    public ResponseEntity<List<BookResponse>> getBooks(@RequestParam(value = "genre",required = false) String genre,
                                    @RequestParam(value = "available",required = false,defaultValue = "false") boolean available,
                                    @RequestParam(value = "author",required = false) String author){
 
-        List<Book> bookList=bookService.getBooks(genre,available,author);
+        List<BookResponse> bookList=bookService.getBooks(genre,available,author);
         return new ResponseEntity(bookList,HttpStatus.OK);
 
 

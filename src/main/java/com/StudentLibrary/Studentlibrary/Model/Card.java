@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Card extends User{
+public class Card {
 
 
 
@@ -19,8 +19,8 @@ public class Card extends User{
     private int id;
 
 
-    @OneToOne(mappedBy = "card",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Student student;
+//    @OneToOne(mappedBy = "card",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    private Student student;
 
     @CreationTimestamp
     private Date createdOn;
@@ -43,10 +43,6 @@ public class Card extends User{
         this.cardStatus=CardStatus.ACTIVATED;
     }
 
-    @Override
-    public Long getId() {
-        return super.getId();  // Assuming the ID is stored and managed in the User class
-    }
 }
 
 

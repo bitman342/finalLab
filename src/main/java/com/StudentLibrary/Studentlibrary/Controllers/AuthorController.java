@@ -2,6 +2,7 @@ package com.StudentLibrary.Studentlibrary.Controllers;
 
 import com.StudentLibrary.Studentlibrary.Model.Author;
 import com.StudentLibrary.Studentlibrary.Services.AuthorService;
+import com.StudentLibrary.Studentlibrary.dto.AuthorResponse;
 import com.StudentLibrary.Studentlibrary.dto.NewAuthor;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,10 @@ public class AuthorController {
 //        return new ResponseEntity(createAuthor, HttpStatus.CREATED);
 //    }
 @PostMapping("/createAuthor")
-public ResponseEntity<Author> createAuthor(@RequestBody NewAuthor newAuthor){
-    Author createdAuthor = authorService.createAuthor(newAuthor);
+public ResponseEntity<AuthorResponse> createAuthor(@RequestBody NewAuthor newAuthor){
+
+    AuthorResponse createdAuthor =  authorService.createAuthor(newAuthor);
+   // Author createdAuthor = authorService.createAuthor(newAuthor);
     return new ResponseEntity<>(createdAuthor, HttpStatus.CREATED);
 }
 

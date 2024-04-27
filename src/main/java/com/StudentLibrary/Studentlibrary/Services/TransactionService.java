@@ -30,23 +30,28 @@ public class TransactionService {
 
 
     public String issueBooks(int cardId,int bookId) throws Exception {
-        Book book=bookRepository.findById(bookId).get();
-        System.out.println(book);
 
-        if (book==null||book.isAvailable()!=true){
+        System.out.println("Inside issue books");
+        Book book=bookRepository.findById(bookId).get();
+       // System.out.println(book);
+
+        if (book==null){
             throw new Exception("Book is either unavailable or not present!!");
         }
         Card card=cardRepository.findById(cardId).get();
-        System.out.println(card);
+
         if (card==null||card.getCardStatus()== CardStatus.DEACTIVATED){
             throw new Exception("Card is invalid!!");
         }
         if (card.getBooks().size()>max_allowed_books){
             throw new Exception("Book limit reached for this card!!");
         }
-        book.setAvailable(false);
-        book.setCard(card);
-        List<Book> books=card.getBooks();
+       // book.setAvailable(false);
+     //   book.setCard(card);
+
+
+//        return "sasd";
+        List<Book> books = card.getBooks();
         books.add(book);
         card.setBooks(books);
         bookRepository.updateBook(book);
@@ -72,7 +77,7 @@ public class TransactionService {
         }
         Card card=last_issue_transaction.getCard();
         Book book=last_issue_transaction.getBook();
-        book.setCard(null);
+        //book.setCard(null);
         book.setAvailable(true);
         bookRepository.updateBook(book);
         Transaction new_transaction=new Transaction();
