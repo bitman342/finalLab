@@ -1,25 +1,4 @@
-# Library-Management-System ![](spring.PNG)
-## Introduction 
-A Library Management System designed to see the books available in a college library. It allows students to register as a user and issue/return books from the college library hassle free. The backend is designed as a **Monolithic Architecture** with various nuances as discussed below.
-## Technologies and Dependencies Used
-* [Maven](https://maven.apache.org/) used as a dependency management tool.
-* [Spring Boot](https://spring.io/projects/spring-boot) used to build hassle free web applications and writing REST APIs.
-* [Spring Security](https://spring.io/projects/spring-security) used for Authentication and Authorizations.
-* [Spring data JPA (Hibernate)](https://hibernate.org/) Used to reduce the time of writing hardcoded sql queries and instead allows to write much more readable and scalable code 
-* [MySQL](https://www.mysql.com/) used as a Java persistence store
-* [Project Lombok](https://projectlombok.org/) Reduces the time  of writing java boiler plate code.
 
-## Using Library Management System
-CLI-->
-```
-git clone https://github.com/saikat021/Library-Management-System.git
-cd Library-Management-System
-mvn package 
-java -jar target/Student-library-0.0.1-SNAPSHOT.jar
-```
-Intellij/Eclipse-->
-1. Let maven resolve dependencies 
-2. run SpringBootApplication
 
 ## Backend Design 
 ### Entities 
@@ -47,30 +26,6 @@ An additional SQL table created to map the N:M mapping between the **Card** and 
 * fine amount (Applicable only while return operations and fine calculated based on a pre-defined Business logic written clearly in the Transaction Service class)
 
 
-ER Diagram:
-![](ER.PNG)
-
-### Functionalities Exposed 
-#### Student Controller class 
-The REST APIs exposed are 
-* CRUD APIs for the create, update, delete student information. The create student API **http://localhost:8080/student/createStudent** creates a student entity along with a card entry for that student and an user entity with Authorization as **STUDENT**.
-* Another API exposed is of changing password. The default login details of any user are Username:->emailId provided at the time of createStudent API hit and Password:->pass123(Bcrypt Encoded). This API used to change the login details mainly the password. 
-
-#### Book and Author Controller class 
-The REST APIs exposed are normal CRUD operations on Book and Author entities.
-
-#### Transaction Controller 
-Two of the most important REST APIs exposed are:
-##### Issue Book
-**https://localhost:8080/issueBook?bookId=_&cardId=_** goes through the following operations before issueing a book:
-Constraints : --> 
-1. Check if card is Activated?
-2. Check if the book is available? 
-3. Check if the number of books issued with the requested card has gone past the maximum limit of number of books to be issued.
-Operations :-->
-1. Book status marked unavailable in the Book table.
-2. Book is mapped to a card 
-3. Transaction entry made in the transaction table and the Transaction unique UUID forwarded to the client in a Response Entity.
 
 
 ##### Return Book
